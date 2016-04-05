@@ -1,0 +1,34 @@
+galaxy-a:
+  #build: .
+  image: bgruening/galaxy-stable
+  expose:
+    - 80
+
+galaxy-b:
+  #build: .
+  image: bgruening/galaxy-stable
+  expose:
+    - 80
+
+galaxy-c:
+  #build: .
+  image: bgruening/galaxy-stable
+  expose:
+    - 80
+
+haproxy:
+  image: haproxy
+  volumes:
+   - haproxy:/haproxy-override
+  links:
+   - galaxy-a
+   - galaxy-b
+   - galaxy-c
+  ports:
+   - "9080:80"
+   - "9070:70"
+  expose:
+   - "80"
+   - "70"
+
+
