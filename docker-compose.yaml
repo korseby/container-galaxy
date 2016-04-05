@@ -16,10 +16,10 @@ galaxy-c:
   expose:
     - 80
 
-haproxy:
-  image: haproxy
+galaxy-haproxy:
+  image: galaxy-haproxy
   volumes:
-   - haproxy:/haproxy-override
+   - galaxy-haproxy:/haproxy-override
   links:
    - galaxy-a
    - galaxy-b
