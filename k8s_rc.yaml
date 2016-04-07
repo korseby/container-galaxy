@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: galaxy-rc
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: galaxy
+    spec:
+      containers:
+      - name: galaxy
+        image: bgruening/galaxy-stable
+        volumeMounts:
+          - name: galaxy-tmp
+            mountPath: "/tmp"
+            readOnly: false
+        ports:
+        - containerPort: 80
+      volumes:
+        - name: galaxy-tmp
+          hostPath:
+            path: "/tmp"
