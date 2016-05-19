@@ -1,23 +1,20 @@
 galaxy-a:
-  #build: .
   image: bgruening/galaxy-stable
   expose:
     - 80
 
 galaxy-b:
-  #build: .
   image: bgruening/galaxy-stable
   expose:
     - 80
 
 galaxy-c:
-  #build: .
   image: bgruening/galaxy-stable
   expose:
     - 80
 
 galaxy-haproxy:
-  image: galaxy-haproxy
+  build: galaxy-haproxy
   volumes:
    - galaxy-haproxy:/haproxy-override
   links:
